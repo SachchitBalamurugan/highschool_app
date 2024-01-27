@@ -94,11 +94,13 @@ class _ArtProfileState extends State<ArtProfile> {
   ];
 
   File? _aboutArtistImage;
+  File? _aboutArtistImageBottom;
   File? _performancesImage;
   File? _awardsImage;
   File? _awardsImageLeft;
   File? _awardsImageRight;
-
+  File? _performanceImageLeft;
+  File? _performanceImageRight;
 
   Future<void> _getImage(String section) async {
     final picker = ImagePicker();
@@ -122,6 +124,15 @@ class _ArtProfileState extends State<ArtProfile> {
           case 'aboutArtistLeft':
             _awardsImageLeft = File(pickedFile.path);
             break;
+          case 'performanceArtistLeft':
+            _performanceImageLeft = File(pickedFile.path);
+            break;
+          case 'performanceArtistRight':
+            _performanceImageRight = File(pickedFile.path);
+            break;
+          case 'aboutArtistImageBottom':
+            _aboutArtistImageBottom = File(pickedFile.path);
+          break;
           default:
             break;
         }
@@ -392,91 +403,44 @@ class _ArtProfileState extends State<ArtProfile> {
                       SizedBox(height: 15),
                       Stack(
                         children: [
-                          Stack(
-                            children: [
-                              Container(
-                                width: 180,
-                                height: 180,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color(0xFF8EB1BB),
-                                ),
-                                child: _aboutArtistImage != null
-                                    ? Image.file(
-                                  _aboutArtistImage!,
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                  fit: BoxFit.cover,
-                                )
-                                    : null,
-                              ),
-                              Positioned(
-                                top: 0,
-                                right: 0,
-                                child: InkWell(
-                                  onTap: () {
-                                    _getImage('aboutArtist');
-                                  },
-                                  child: Container(
-                                    padding: EdgeInsets.all(8),
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.white,
-                                    ),
-                                    child: Icon(
-                                      Icons.upload_outlined,
-                                      size: 30,
-                                      color: Color(0xFF8EB1BB),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                          Container(
+                            width: 180,
+                            height: 180,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Color(0xFF8EB1BB),
+                            ),
+                            child: _aboutArtistImageBottom != null
+                                ? Image.file(
+                              _aboutArtistImageBottom!,
+                              width: double.infinity,
+                              height: double.infinity,
+                              fit: BoxFit.cover,
+                            )
+                                : null,
                           ),
-                          SizedBox(height: 15),
-                          Stack(
-                            children: [
-                              Container(
-                                width: 180,
-                                height: 180,
+                          Positioned(
+                            top: 0,
+                            right: 0,
+                            child: InkWell(
+                              onTap: () {
+                                _getImage('aboutArtistImageBottom');
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(8),
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                ),
+                                child: Icon(
+                                  Icons.upload_outlined,
+                                  size: 30,
                                   color: Color(0xFF8EB1BB),
                                 ),
-                                child: _aboutArtistImage != null
-                                    ? Image.file(
-                                  _aboutArtistImage!,
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                  fit: BoxFit.cover,
-                                )
-                                    : null,
                               ),
-                              Positioned(
-                                top: 0,
-                                right: 0,
-                                child: InkWell(
-                                  onTap: () {
-                                    _getImage('aboutArtist');
-                                  },
-                                  child: Container(
-                                    padding: EdgeInsets.all(8),
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.white,
-                                    ),
-                                    child: Icon(
-                                      Icons.upload_outlined,
-                                      size: 30,
-                                      color: Color(0xFF8EB1BB),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ],
-
                       ),
                     ],
                   ),
@@ -602,9 +566,9 @@ class _ArtProfileState extends State<ArtProfile> {
                                         borderRadius: BorderRadius.circular(15),
                                         color: Color(0xFF8EB1BB),
                                       ),
-                                      child: _aboutArtistImage != null
+                                      child: _performanceImageLeft != null
                                           ? Image.file(
-                                        _aboutArtistImage!,
+                                        _performanceImageLeft!,
                                         width: double.infinity,
                                         height: double.infinity,
                                         fit: BoxFit.cover,
@@ -616,49 +580,7 @@ class _ArtProfileState extends State<ArtProfile> {
                                       right: 0,
                                       child: InkWell(
                                         onTap: () {
-                                          _getImage('aboutArtist');
-                                        },
-                                        child: Container(
-                                          padding: EdgeInsets.all(8),
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Colors.white,
-                                          ),
-                                          child: Icon(
-                                            Icons.upload_outlined,
-                                            size: 30,
-                                            color: Color(0xFF8EB1BB),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 15),
-                                Stack(
-                                  children: [
-                                    Container(
-                                      width: 180,
-                                      height: 180,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15),
-                                        color: Color(0xFF8EB1BB),
-                                      ),
-                                      child: _aboutArtistImage != null
-                                          ? Image.file(
-                                        _aboutArtistImage!,
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
-                                      )
-                                          : null,
-                                    ),
-                                    Positioned(
-                                      top: 0,
-                                      right: 0,
-                                      child: InkWell(
-                                        onTap: () {
-                                          _getImage('aboutArtist');
+                                          _getImage('performanceArtistLeft');
                                         },
                                         child: Container(
                                           padding: EdgeInsets.all(8),
@@ -677,95 +599,55 @@ class _ArtProfileState extends State<ArtProfile> {
                                   ],
                                 ),
                               ],
-
                             ),
                             Stack(
                               children: [
                                 Stack(
                                   children: [
-                                    Container(
-                                      width: 180,
-                                      height: 180,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15),
-                                        color: Color(0xFF8EB1BB),
-                                      ),
-                                      child: _aboutArtistImage != null
-                                          ? Image.file(
-                                        _aboutArtistImage!,
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
-                                      )
-                                          : null,
-                                    ),
-                                    Positioned(
-                                      top: 0,
-                                      right: 0,
-                                      child: InkWell(
-                                        onTap: () {
-                                          _getImage('aboutArtist');
-                                        },
-                                        child: Container(
-                                          padding: EdgeInsets.all(8),
+                                    Stack(
+                                      children: [
+                                        Container(
+                                          width: 180,
+                                          height: 180,
                                           decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Colors.white,
-                                          ),
-                                          child: Icon(
-                                            Icons.upload_outlined,
-                                            size: 30,
+                                            borderRadius: BorderRadius.circular(15),
                                             color: Color(0xFF8EB1BB),
                                           ),
+                                          child: _performanceImageRight != null
+                                              ? Image.file(
+                                            _performanceImageRight!,
+                                            width: double.infinity,
+                                            height: double.infinity,
+                                            fit: BoxFit.cover,
+                                          )
+                                              : null,
                                         ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 15),
-                                Stack(
-                                  children: [
-                                    Container(
-                                      width: 180,
-                                      height: 180,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15),
-                                        color: Color(0xFF8EB1BB),
-                                      ),
-                                      child: _aboutArtistImage != null
-                                          ? Image.file(
-                                        _aboutArtistImage!,
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
-                                      )
-                                          : null,
-                                    ),
-                                    Positioned(
-                                      top: 0,
-                                      right: 0,
-                                      child: InkWell(
-                                        onTap: () {
-                                          _getImage('aboutArtist');
-                                        },
-                                        child: Container(
-                                          padding: EdgeInsets.all(8),
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Colors.white,
-                                          ),
-                                          child: Icon(
-                                            Icons.upload_outlined,
-                                            size: 30,
-                                            color: Color(0xFF8EB1BB),
+                                        Positioned(
+                                          top: 0,
+                                          right: 0,
+                                          child: InkWell(
+                                            onTap: () {
+                                              _getImage('performanceArtistRight');
+                                            },
+                                            child: Container(
+                                              padding: EdgeInsets.all(8),
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: Colors.white,
+                                              ),
+                                              child: Icon(
+                                                Icons.upload_outlined,
+                                                size: 30,
+                                                color: Color(0xFF8EB1BB),
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                      ),
+                                      ],
                                     ),
                                   ],
                                 ),
                               ],
-
                             ),
                           ],
                         ),
@@ -870,7 +752,7 @@ class _ArtProfileState extends State<ArtProfile> {
                                   children: [
                                     Container(
                                       width: 180,
-                                      height: 200,
+                                      height: 180,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(15),
                                         color: Color(0xFF8EB1BB),
@@ -907,96 +789,49 @@ class _ArtProfileState extends State<ArtProfile> {
                                     ),
                                   ],
                                 ),
-                                
                               ],
-
                             ),
                             Stack(
                               children: [
-                                Stack(
-                                  children: [
-                                    Container(
-                                      width: 180,
-                                      height: 180,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15),
-                                        color: Color(0xFF8EB1BB),
-                                      ),
-                                      child: _aboutArtistImage != null
-                                          ? Image.file(
-                                        _aboutArtistImage!,
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
-                                      )
-                                          : null,
-                                    ),
-                                    Positioned(
-                                      top: 0,
-                                      right: 0,
-                                      child: InkWell(
-                                        onTap: () {
-                                          _getImage('aboutArtist');
-                                        },
-                                        child: Container(
-                                          padding: EdgeInsets.all(8),
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Colors.white,
-                                          ),
-                                          child: Icon(
-                                            Icons.upload_outlined,
-                                            size: 30,
-                                            color: Color(0xFF8EB1BB),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                Container(
+                                  width: 180,
+                                  height: 180,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    color: Color(0xFF8EB1BB),
+                                  ),
+                                  child: _awardsImageRight != null
+                                      ? Image.file(
+                                    _awardsImageRight!,
+                                    width: double.infinity,
+                                    height: double.infinity,
+                                    fit: BoxFit.cover,
+                                  )
+                                      : null,
                                 ),
-                                SizedBox(height: 15),
-                                Stack(
-                                  children: [
-                                    Container(
-                                      width: 180,
-                                      height: 180,
+                                Positioned(
+                                  top: 0,
+                                  right: 0,
+                                  child: InkWell(
+                                    onTap: () {
+                                      _getImage('aboutArtistRight');
+                                    },
+                                    child: Container(
+                                      padding: EdgeInsets.all(8),
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15),
+                                        shape: BoxShape.circle,
+                                        color: Colors.white,
+                                      ),
+                                      child: Icon(
+                                        Icons.upload_outlined,
+                                        size: 30,
                                         color: Color(0xFF8EB1BB),
                                       ),
-                                      child: _aboutArtistImage != null
-                                          ? Image.file(
-                                        _aboutArtistImage!,
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
-                                      )
-                                          : null,
                                     ),
-                                    Positioned(
-                                      top: 0,
-                                      right: 0,
-                                      child: InkWell(
-                                        onTap: () {
-                                          _getImage('aboutArtist');
-                                        },
-                                        child: Container(
-                                          padding: EdgeInsets.all(8),
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Colors.white,
-                                          ),
-                                          child: Icon(
-                                            Icons.upload_outlined,
-                                            size: 30,
-                                            color: Color(0xFF8EB1BB),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                  ),
                                 ),
                               ],
+
 
                             ),
                           ],
