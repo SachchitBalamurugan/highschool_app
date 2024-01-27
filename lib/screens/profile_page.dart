@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'app_info.dart';
 import '../screens/community.dart';
 import '../screens/account.dart';
+import 'art_portfolio.dart';
 import 'iphone-14-12.dart';
 import 'BookingManager.dart';
 
@@ -183,7 +184,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Hi, $_userName", // Use the user's name
+                                "$_userName", // Use the user's name
                                 style: const TextStyle(
                                   fontSize: 25,
                                   fontWeight: FontWeight.w600,
@@ -562,7 +563,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 Container(
                                   margin: EdgeInsets.only(left: 10, top: 10),
                                   child: Text(
-                                    "Academic Achievements",
+                                    "Athletic Participation",
                                     style: TextStyle(
                                       fontSize: 24,
                                       fontWeight: FontWeight.w600,
@@ -844,12 +845,24 @@ class _ProfilePageState extends State<ProfilePage> {
                               children: [
                                 Container(
                                   margin: EdgeInsets.only(left: 10, top: 10),
-                                  child: Text(
-                                    "Academic Achievements",
-                                    style: TextStyle(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Performing Arts",
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      Text(
+                                        "Experience",
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 Spacer(),
@@ -926,23 +939,31 @@ class _ProfilePageState extends State<ProfilePage> {
                                             SizedBox(height: 5),
                                             Row(
                                               children: [
-                                                Container(
-                                                  width: 100,
-                                                  height: 29,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(15),
-                                                    color: Color(0x00ffffff),
-                                                    border: Border.all(
-                                                      color: Colors.grey, // Add your desired border color
-                                                      width: 2, // Add your desired border width
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(builder: (context) => ArtProfile()),
+                                                    );
+                                                  },
+                                                  child: Container(
+                                                    width: 100,
+                                                    height: 29,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius: BorderRadius.circular(15),
+                                                      color: Color(0x00ffffff),
+                                                      border: Border.all(
+                                                        color: Colors.grey, // Add your desired border color
+                                                        width: 2, // Add your desired border width
+                                                      ),
                                                     ),
-                                                  ),
-                                                  child: Center(
-                                                    child: Text(
-                                                      "View Award",
-                                                      style: TextStyle(
-                                                        fontSize: 13,
-                                                        fontWeight: FontWeight.w600,
+                                                    child: Center(
+                                                      child: Text(
+                                                        "View Award",
+                                                        style: TextStyle(
+                                                          fontSize: 13,
+                                                          fontWeight: FontWeight.w600,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
